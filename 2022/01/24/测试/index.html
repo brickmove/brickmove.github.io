@@ -104,7 +104,31 @@
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成静态文章</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署文章</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 <p><code>发布文章</code></p>
-<p><strong>在发布之前了解下默认的3种布局(layout)</strong><br>|布局|路径|含义|<br>|–|–|–|<br>|post|source/_posts|发布|<br>|page|source|另起一页|<br>|draft|source/_drafts|草稿|</p>
+<p><strong>在发布之前了解下默认的3种布局(layout)</strong></p>
+<table>
+<thead>
+<tr>
+<th>布局</th>
+<th>路径</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>post</td>
+<td>source/_posts</td>
+<td>发布</td>
+</tr>
+<tr>
+<td>page</td>
+<td>source</td>
+<td>另起一页</td>
+</tr>
+<tr>
+<td>draft</td>
+<td>source/_drafts</td>
+<td>草稿</td>
+</tr>
+</tbody></table>
 <p><strong>可以修改3中布局模版达到定制效果</strong></p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布命令</span></span><br><span class="line">hexo new [<span class="type">layout</span>] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 
