@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo-asset-image插件无法正确识别图片路径</title>
+    <url>/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/</url>
+    <content><![CDATA[<p><code>问题背景</code><br>路径后面会多一层域名的.work<br>比如域名为yuxiang.work,图片会被链接到下面的路径<br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180401.png" alt="微信截图_20220126180401.png"></p>
+<p><code>解决方案</code><br>修改插件的源码<code>index.js</code><br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180652.png" alt="微信截图_20220126180652.png"></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/01/25/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo使用总结</title>
+    <url>/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p><code>hexo安装</code></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p><code>hexo部署</code></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment">#生成静态文章</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署文章</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p><code>发布文章</code></p>
+<p><strong>在发布之前了解下默认的3种布局(layout)</strong></p>
+<table>
+<thead>
+<tr>
+<th>布局</th>
+<th>路径</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>post</td>
+<td>source/_posts</td>
+<td>发布</td>
+</tr>
+<tr>
+<td>page</td>
+<td>source</td>
+<td>另起一页</td>
+</tr>
+<tr>
+<td>draft</td>
+<td>source/_drafts</td>
+<td>草稿</td>
+</tr>
+</tbody></table>
+<p><strong>可以修改3中布局模版达到定制效果</strong></p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 发布命令</span></span><br><span class="line">hexo new [<span class="type">layout</span>] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 3种发布命令</span></span><br><span class="line">hexo new page test</span><br><span class="line">hexo new draft test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认使用的是post的模版</span></span><br><span class="line">hexo new post test</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">hexo new test</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment">#草稿预览：</span></span><br><span class="line">hexo server -<span class="literal">-draft</span></span><br><span class="line"><span class="comment">#草稿的发布：</span></span><br><span class="line">hexo publish draft test</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>冒险岛link表</title>
+    <url>/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/</url>
+    <content><![CDATA[<p><img src="http://yuxiang.work/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/%E8%81%8C%E4%B8%9A%E7%BE%A4%E5%88%97%E8%A1%A8%E5%9B%BE.JPG" alt="职业群列表图"></p>
+<p><img src="http://yuxiang.work/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/link.JPG" alt="link和角色卡"></p>
+]]></content>
+      <categories>
+        <category>游戏</category>
+      </categories>
+      <tags>
+        <tag>冒险岛</tag>
+      </tags>
+  </entry>
+</search>
