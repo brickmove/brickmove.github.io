@@ -1,102 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hexo-asset-image插件无法正确识别图片路径</title>
-    <url>/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/</url>
-    <content><![CDATA[<p><code>问题背景</code><br>路径后面会多一层域名的.work<br>比如域名为yuxiang.work,图片会被链接到下面的路径<br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180401.png" alt="微信截图_20220126180401.png"></p>
-<p><code>解决方案</code><br>修改插件的源码<code>index.js</code><br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180652.png" alt="微信截图_20220126180652.png"></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>js之Data对象使用</title>
+      <link href="/2022/02/08/js%E4%B9%8BData%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8/"/>
+      <url>/2022/02/08/js%E4%B9%8BData%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date对象是 JavaScript 原生的时间库。它以国际标准时间（UTC）1970年1月1日00:00:00作为时间的零点，可以表示的时间范围是前后各1亿天（单位为毫秒）</span><br></pre></td></tr></table></figure><h2 id="普通函数用法"><a href="#普通函数用法" class="headerlink" title="普通函数用法"></a>普通函数用法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回一个代表当前时间的字符串</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>()); <span class="comment">// Wed Feb 09 2022 15:38:52 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="comment">// 即使带了参数也是返回当前时间, 参数个数没有影响</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>)); <span class="comment">// Wed Feb 09 2022 15:40:11 GMT+0800 (中国标准时间)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>(<span class="number">2000</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>(<span class="number">2000</span>, <span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>(<span class="number">2000</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>));</span><br></pre></td></tr></table></figure><h2 id="构造函数用法"><a href="#构造函数用法" class="headerlink" title="构造函数用法"></a>构造函数用法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取当前的UTC时间</span></span><br><span class="line"><span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// 2022-02-09T07:35:37.335Z</span></span><br><span class="line"><span class="comment">// 时间戳转为字符串格式</span></span><br><span class="line"><span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>); <span class="comment">// 1970-01-01T00:00:00.000Z</span></span><br><span class="line"><span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">1644394635720</span>); <span class="comment">// 2022-02-09T08:17:15.720Z</span></span><br><span class="line"><span class="comment">// 时间戳为负数则代表1970之前的时间</span></span><br><span class="line"><span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>(-<span class="number">1644394635720</span>); <span class="comment">// 1917-11-22T15:42:44.280Z </span></span><br><span class="line"><span class="comment">// 当前时间转化为时间戳（单位：ms）</span></span><br><span class="line"><span class="keyword">let</span> now1 = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime(); <span class="comment">// 1644394635720</span></span><br><span class="line"><span class="comment">// 指定字符串格式的时间转换为时间戳</span></span><br><span class="line"><span class="keyword">let</span> now2 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2022-02-09T07:35:37.335Z&#x27;</span>).getTime(); <span class="comment">// 1644392137335</span></span><br></pre></td></tr></table></figure><p><strong>只要能被Date.parse()解析就可以当成字符串传入new Date()</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2022-02-08T16:00:00.000Z</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2022-2-9&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2022/2/9&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2/9/2022&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;2022-FEB-9&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;FEB, 9, 2022&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;FEB 9, 2022&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;February, 9, 2022&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;February 9, 2022&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;9 Feb 2022&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">&#x27;9, February, 2022&#x27;</span>));</span><br></pre></td></tr></table></figure><p><strong>new Date()多个参数</strong></p><blockquote><p><code>new Date(year, month, date, hours, minutes, seconds, ms)</code><br>使用当前时区中的给定组件创建日期。只有<code>前两个参数是必须的</code>。<br>也就是说年和月是必须的，最少两个参数，否则被识别为时间戳了。<br>$ new Date(2022) // 1970-01-01T00:00:02.022Z<br>$ new Date(2022, 2) // 2022-02-28T16:00:00.000Z<br>year 必须是四位数：2013 是合法的，98 是不合法的。<br>month 计数从 0（一月）开始，到 11（十二月）结束。<br>date 是当月的具体某一天，如果缺失，则为默认值 1。<br>如果 hours/minutes/seconds/ms 缺失，则均为默认值 0。</p></blockquote><h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p><strong>Date.parse()</strong></p><blockquote><p><code>Date.parse()</code>方法用来解析日期字符串，返回该时间距离时间零点（1970年1月1日 00:00:00）的毫秒数.<br>日期字符串应该符合 RFC 2822 和 ISO 8061 这两个标准，即<code>YYYY-MM-DDTHH:mm:ss.sssZ</code>格式，其中最后的Z表示时区。</p></blockquote><p><strong>Date.now()</strong></p><blockquote><p><code>Date.now</code>方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数，相当于 Unix 时间戳乘以1000。<br>$ console.log(Date.now()); // 1644399418450</p></blockquote><p><strong>Date.UTC()</strong></p><blockquote><p><code>Date.UTC</code>方法接受年、月、日等变量作为参数，返回该时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。<br>// 格式<br>Date.UTC(year, month[, date[, hrs[, min[, sec[, ms]]]]])<br>// 用法<br>Date.UTC(2011, 0, 1, 2, 3, 4, 567)<br>// 1293847384567</p></blockquote>]]></content>
+      
+      
       <categories>
-        <category>hexo</category>
+          
+          <category> 脚本 </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/01/25/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo-asset-image插件无法正确识别图片路径</title>
+      <link href="/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/"/>
+      <url>/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/</url>
+      
+        <content type="html"><![CDATA[<p><code>问题背景</code><br>路径后面会多一层域名的.work<br>比如域名为yuxiang.work,图片会被链接到下面的路径<br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180401.png" alt="微信截图_20220126180401.png"></p><p><code>解决方案</code><br>修改插件的源码<code>index.js</code><br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180652.png" alt="微信截图_20220126180652.png"></p>]]></content>
+      
+      
       <categories>
-        <category>hexo</category>
+          
+          <category> hexo </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo使用总结</title>
-    <url>/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p><code>hexo安装</code></p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p><code>hexo部署</code></p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment">#生成静态文章</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署文章</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p><code>发布文章</code></p>
-<p><strong>在发布之前了解下默认的3种布局(layout)</strong></p>
-<table>
-<thead>
-<tr>
-<th>布局</th>
-<th>路径</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>post</td>
-<td>source/_posts</td>
-<td>发布</td>
-</tr>
-<tr>
-<td>page</td>
-<td>source</td>
-<td>另起一页</td>
-</tr>
-<tr>
-<td>draft</td>
-<td>source/_drafts</td>
-<td>草稿</td>
-</tr>
-</tbody></table>
-<p><strong>可以修改3中布局模版达到定制效果</strong></p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 发布命令</span></span><br><span class="line">hexo new [<span class="type">layout</span>] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 3种发布命令</span></span><br><span class="line">hexo new page test</span><br><span class="line">hexo new draft test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认使用的是post的模版</span></span><br><span class="line">hexo new post test</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">hexo new test</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment">#草稿预览：</span></span><br><span class="line">hexo server -<span class="literal">-draft</span></span><br><span class="line"><span class="comment">#草稿的发布：</span></span><br><span class="line">hexo publish draft test</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>冒险岛link表</title>
+      <link href="/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/"/>
+      <url>/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<p><img src="http://yuxiang.work/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/%E8%81%8C%E4%B8%9A%E7%BE%A4%E5%88%97%E8%A1%A8%E5%9B%BE.JPG" alt="职业群列表图"></p><p><img src="http://yuxiang.work/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/link.JPG" alt="link和角色卡"></p>]]></content>
+      
+      
       <categories>
-        <category>hexo</category>
+          
+          <category> 游戏 </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>冒险岛link表</title>
-    <url>/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/</url>
-    <content><![CDATA[<p><img src="http://yuxiang.work/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/%E8%81%8C%E4%B8%9A%E7%BE%A4%E5%88%97%E8%A1%A8%E5%9B%BE.JPG" alt="职业群列表图"></p>
-<p><img src="http://yuxiang.work/2022/01/25/%E5%86%92%E9%99%A9%E5%B2%9Blink%E8%A1%A8/link.JPG" alt="link和角色卡"></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 冒险岛 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/01/25/hello-world/"/>
+      <url>/2022/01/25/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
       <categories>
-        <category>游戏</category>
+          
+          <category> hexo </category>
+          
       </categories>
-      <tags>
-        <tag>冒险岛</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo使用总结</title>
+      <link href="/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
+      <url>/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p><code>hexo安装</code></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure><p><code>hexo部署</code></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成静态文章</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署文章</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p><code>发布文章</code></p><p><strong>在发布之前了解下默认的3种布局(layout)</strong></p><table><thead><tr><th>布局</th><th>路径</th><th>含义</th></tr></thead><tbody><tr><td>post</td><td>source/_posts</td><td>发布</td></tr><tr><td>page</td><td>source</td><td>另起一页</td></tr><tr><td>draft</td><td>source/_drafts</td><td>草稿</td></tr></tbody></table><p><strong>可以修改3中布局模版达到定制效果</strong></p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布命令</span></span><br><span class="line">hexo new [<span class="type">layout</span>] &lt;title&gt;</span><br></pre></td></tr></table></figure><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3种发布命令</span></span><br><span class="line">hexo new page test</span><br><span class="line">hexo new draft test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认使用的是post的模版</span></span><br><span class="line">hexo new post test</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">hexo new test</span><br></pre></td></tr></table></figure><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#草稿预览：</span></span><br><span class="line">hexo server -<span class="literal">-draft</span></span><br><span class="line"><span class="comment">#草稿的发布：</span></span><br><span class="line">hexo publish draft test</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
