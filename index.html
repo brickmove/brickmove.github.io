@@ -156,18 +156,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,6 +204,112 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2023/02/27/%E5%9B%9E%E8%BD%A6%E5%92%8C%E6%8D%A2%E8%A1%8C%E7%9A%84%E5%8E%86%E5%8F%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="weshell">
+      <meta itemprop="description" content="技术分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapStory">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/02/27/%E5%9B%9E%E8%BD%A6%E5%92%8C%E6%8D%A2%E8%A1%8C%E7%9A%84%E5%8E%86%E5%8F%B2/" class="post-title-link" itemprop="url">回车和换行的历史</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-27 09:56:22" itemprop="dateCreated datePublished" datetime="2023-02-27T09:56:22+08:00">2023-02-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2/" itemprop="url" rel="index"><span itemprop="name">计算机历史</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="回车和换行的历史" href="/2023/02/27/%E5%9B%9E%E8%BD%A6%E5%92%8C%E6%8D%A2%E8%A1%8C%E7%9A%84%E5%8E%86%E5%8F%B2/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::c6b26f1db1e1717a20e9c3a0c3a5fe43" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>623</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="命名历史"><a href="#命名历史" class="headerlink" title="命名历史"></a>命名历史</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">在计算机还没有出现之前，有一种叫做电传打字机（Teletype Model 33）的玩意，每秒钟可以打10个字符。</span><br><span class="line">但是它有一个问题，就是打完一行换行的时候，要用去0.2秒，正好可以打两个字符。</span><br><span class="line">要是在这0.2秒里面，又有新的字符传过来，那么这个字符将丢失。</span><br><span class="line">于是，研制人员想了个办法解决这个问题，就是在每行后面加两个表示结束的字符。一个叫做&quot;回车&quot;，告诉打字机把打印头定位在左边界；另一个叫做&quot;换行&quot;，告诉打字机把纸向下移一行。</span><br><span class="line">这就是&quot;换行&quot;和&quot;回车&quot;的来历，从它们的英语名字上也可以看出一二。</span><br><span class="line"></span><br><span class="line">&quot;回车&quot;（carriage return）和&quot;换行&quot;（line feed） 是来源机械英文打字机</span><br><span class="line">&quot;车&quot;指的是纸车,带着纸一起左右移动的模块.</span><br><span class="line">当开始打第一个字之前，要把纸车拉到最右边，上紧弹簧.随着打字，弹簧把纸车拉回去.每当打完一行后，纸车就完全收回去了.所以叫回车.</span><br><span class="line">换行的概念就是:打字机左边有个&quot;把手&quot;,往下扳动一下,纸会上移一行.</span><br></pre></td></tr></table></figure>
+
+<h4 id="不同系统中的差异"><a href="#不同系统中的差异" class="headerlink" title="不同系统中的差异"></a>不同系统中的差异</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">后来，计算机发明了，这两个概念也就被般到了计算机上。</span><br><span class="line">那时，存储器很贵，一些科学家认为在每行结尾加两个字符太浪费了，加一个就可以。</span><br><span class="line">于是，就出现了分歧。</span><br><span class="line"></span><br><span class="line">Unix系统: \n</span><br><span class="line">Windows: \r\n</span><br><span class="line">Mac: \r</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2006/04/post_213.html">引用文章</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -613,7 +719,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>405</span>
+      <span>416</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -667,7 +773,7 @@
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布命令</span></span><br><span class="line">hexo new [<span class="type">layout</span>] &lt;title&gt;</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3种发布命令</span></span><br><span class="line">hexo new page test</span><br><span class="line">hexo new draft test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认使用的是post的模版</span></span><br><span class="line">hexo new post test</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">hexo new test</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3种发布命令</span></span><br><span class="line">hexo new page test</span><br><span class="line">hexo new draft test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认使用的是post的模版</span></span><br><span class="line">hexo new post test</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">hexo new test（新建文章 名test）</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#草稿预览：</span></span><br><span class="line">hexo server -<span class="literal">-draft</span></span><br><span class="line"><span class="comment">#草稿的发布：</span></span><br><span class="line">hexo publish draft test</span><br></pre></td></tr></table></figure>
       
@@ -697,7 +803,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -708,13 +814,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">4k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
