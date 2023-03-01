@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yuxiang.work","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="技术分享">
+<meta name="description" content="源码原码(true form)是一种计算机中对数字的二进制定点表示方法。原码表示法在数值前面增加了一位符号位（即最高位为符号位）：正数该位为0，负数该位为1（0有两种表示：+0和-0），其余位表示数值的大小。例如，我们用8位二进制表示一个数，+11的原码为00001011，-11的原码就是10001011一个 byte 有 8bit，最大值是 0 1 1 1 1 1 1 1 (+127)，最小值是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="源码、反码、补码">
 <meta property="og:url" content="http://yuxiang.work/2023/02/27/%E6%BA%90%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/index.html">
 <meta property="og:site_name" content="MapStory">
-<meta property="og:description" content="技术分享">
+<meta property="og:description" content="源码原码(true form)是一种计算机中对数字的二进制定点表示方法。原码表示法在数值前面增加了一位符号位（即最高位为符号位）：正数该位为0，负数该位为1（0有两种表示：+0和-0），其余位表示数值的大小。例如，我们用8位二进制表示一个数，+11的原码为00001011，-11的原码就是10001011一个 byte 有 8bit，最大值是 0 1 1 1 1 1 1 1 (+127)，最小值是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-27T02:01:02.000Z">
 <meta property="article:modified_time" content="2023-02-27T02:01:02.000Z">
@@ -134,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">反码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">补码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">4.</span> <span class="nav-text">模的概念</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -159,7 +160,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -281,14 +282,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>1.5k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -299,7 +300,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>原码(true form)是一种计算机中对数字的二进制定点表示方法。原码表示法在数值前面增加了一位符号位（即最高位为符号位）：正数该位为0，负数该位为1（0有两种表示：+0和-0），其余位表示数值的大小。<br>例如，我们用8位二进制表示一个数，+11的原码为00001011，-11的原码就是10001011<br>一个 byte 有 8bit，最大值是 0 1 1 1 1 1 1 1 (+127)，最小值是 1 1 1 1 1 1 1 1 (-127)</p>
+<h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><p>正数的反码是其本身（等于原码），负数的反码是符号位保持不变，其余位取反。 反码的存在是为了正确计算负数，因为原码不能用于计算负数.</p>
+<p><code>计算负数</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-8 - 1 = -9</span><br><span class="line"> 10001000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11110111</span><br><span class="line">-00000001</span><br><span class="line">——————————</span><br><span class="line"> 11110110</span><br><span class="line"> 转为反码</span><br><span class="line"> 10001001 刚好就是-9</span><br></pre></td></tr></table></figure>
+<p>也就是说整个计算过程为 ((-8)反码 - (1)原码)反码</p>
+<p><code>跨零计算</code><br>负数跨零进行计算的话，计算结果不对</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-8 + 9 = 1</span><br><span class="line"> 10001000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11110111</span><br><span class="line">+00001001</span><br><span class="line">100000000</span><br><span class="line"> 去掉超过8位的位</span><br><span class="line"> 00000000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11111111</span><br></pre></td></tr></table></figure>
+<p>可以看到明显不对,这个时候就需要补码了</p>
+<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>正数的补码是其本身，负数的补码等于其反码 +1</p>
+<p><code>跨零计算</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-8 + 9 = 1</span><br><span class="line"> 10001000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11110111</span><br><span class="line"> 转为补码</span><br><span class="line"> 11111000</span><br><span class="line">+00001001</span><br><span class="line">100000001</span><br><span class="line"> 去掉超过8位的位</span><br><span class="line"> 00000001</span><br></pre></td></tr></table></figure>
+<p>可以看到此时的值就是对的<br>总结下此时的计算过程 (-8)补 + (9)原</p>
+<h3 id="模的概念"><a href="#模的概念" class="headerlink" title="模的概念"></a>模的概念</h3><p>看了上面的一些概念，肯定有人会疑问，为什么负数的补码是反码加1，其实理解了模的概念，这些反码和补码就很清楚了。</p>
+<p><code>摘录自补码的百度百科</code></p>
+<blockquote>
+<p>“模”是指一个计量系统的计数范围，如过去计量粮食用的斗、时钟等。计算机也可以看成一个计量机器，因为计算机的字长是定长的，即存储和处理的位数是有限的，因此它也有一个计量范围，即都存在一个“模”。如：时钟的计量范围是0~11，模=12。表示n位的计算机计量范围是，模=．“模”实质上是计量器产生“溢出”的量，它的值在计量器上表示不出来，计量器上只能表示出模的余数。任何有模的计量器，均可化减法为加法运算。<br>就是取反后加1。<br>假设当前时针指向8点，而准确时间是6点，调整时间可有以下两种拨法：一种是倒拨2小时，即8-2=6；另一种是顺拨10小时，8+10=12+6=6，即8-2=8+10=8+12-2(mod 12)．在12为模的系统里，加10和减2效果是一样的，因此凡是减2运算，都可以用加10来代替。若用一般公式可表示为：a-b=a-b+mod=a+mod-b。对“模”而言，2和10互为补数。实际上，以12为模的系统中，11和1，8和4，9和3，7和5，6和6都有这个特性，共同的特点是两者相加等于模。对于计算机，其概念和方法完全一样。n位计算机，设n=8，所能表示的最大数是11111111，若再加1成100000000(9位)，但因只有8位，最高位1自然丢失（相当于丢失一个模）。又回到了 00000000，所以8位二进制系统的模为2的8次方。在这样的系统中减法问题也可以化成加法问题，只需把减数用相应的补数表示就可以了。把补数用到计算机对数的处理上，就是补码。</p>
+</blockquote>
+<p>回到上面 -8 + 9 = 1这个例子，用模的来理解（8为2进制数的模为128）就可以转换为 9 - 8 = 9 + 120 = 129<br>129 转为2进制表示即为 100000001，因为最多显示128，只有8位，所以最高的第9位去掉，即为00000001 = 1。</p>
+
     </div>
 
     
@@ -338,6 +357,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/" rel="next" title="加法机的实现">
+                  加法机的实现 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -370,13 +392,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">9k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

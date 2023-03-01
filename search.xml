@@ -130,16 +130,25 @@
 
 <p><a href="http://www.ruanyifeng.com/blog/2006/04/post_213.html">引用文章</a></p>
 <h4 id="ChatGPT的回答"><a href="#ChatGPT的回答" class="headerlink" title="ChatGPT的回答"></a>ChatGPT的回答</h4><p><code>我：Why were carriage returns and line feeds created?</code></p>
-<p><code>ChatGPT：</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Carriage returns and line feeds were created as a means of controlling how text was displayed on early computer systems and printers.</span><br><span class="line"></span><br><span class="line">In the early days of computing, text was typically printed on teletype machines, which used a combination of mechanical and electrical systems to print characters on paper. These machines used a roll of paper that was fed through the machine, with characters being printed on the paper one at a time.</span><br><span class="line"></span><br><span class="line">To control the position of the printing head, teletype machines used two separate control codes: a carriage return (CR) and a line feed (LF).</span><br><span class="line"></span><br><span class="line">A carriage return (CR) code instructs the machine to move the printing head all the way to the left margin of the paper. This was necessary because the printing head would typically be positioned at the right side of the paper after printing a line of text, so a carriage return was necessary to reset the position of the head.</span><br><span class="line"></span><br><span class="line">A line feed (LF) code instructs the machine to move the paper up by one line, so that the next line of text can be printed. This was necessary because the paper on a teletype machine was fed vertically through the machine, so moving the paper up by one line was necessary to print on the next line.</span><br><span class="line"></span><br><span class="line">Today, carriage returns and line feeds are still used in some contexts, such as in programming languages or when working with text files in certain operating systems. However, the way they are used has evolved over time and varies depending on the specific context.</span><br></pre></td></tr></table></figure>
-
+<p><code>ChatGPT：</code>Carriage returns and line feeds were created as a means of controlling how text was displayed on early computer systems and printers.</p>
+<p>In the early days of computing, text was typically printed on teletype machines, which used a combination of mechanical and electrical systems to print characters on paper. These machines used a roll of paper that was fed through the machine, with characters being printed on the paper one at a time.</p>
+<p>To control the position of the printing head, teletype machines used two separate control codes: a carriage return (CR) and a line feed (LF).</p>
+<p>A carriage return (CR) code instructs the machine to move the printing head all the way to the left margin of the paper. This was necessary because the printing head would typically be positioned at the right side of the paper after printing a line of text, so a carriage return was necessary to reset the position of the head.</p>
+<p>A line feed (LF) code instructs the machine to move the paper up by one line, so that the next line of text can be printed. This was necessary because the paper on a teletype machine was fed vertically through the machine, so moving the paper up by one line was necessary to print on the next line.</p>
+<p>Today, carriage returns and line feeds are still used in some contexts, such as in programming languages or when working with text files in certain operating systems. However, the way they are used has evolved over time and varies depending on the specific context.</p>
 <p><code>我：Why is the carriage return or line feed at the end of the text different in different operating systems?</code></p>
-<p><code>ChatGPT：</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">The reason why carriage return or line feed at the end of text is different in different operating systems is rooted in historical differences in how these operating systems handled text and line endings.</span><br><span class="line"></span><br><span class="line">In Unix and Unix-like operating systems, such as Linux and macOS, a line feed (LF) character is used to mark the end of a line of text. This convention dates back to the early days of Unix, when it was developed as a text-based operating system. In Unix, files are stored as a sequence of lines, with each line terminated by a single LF character. This convention is also used in programming languages that were developed on Unix, such as C and its derivatives.</span><br><span class="line"></span><br><span class="line">In contrast, in early versions of Microsoft Windows and MS-DOS, a carriage return (CR) followed by a line feed (LF) sequence is used to mark the end of a line of text. This convention goes back to the days of typewriters and teletype machines, which used both the CR and LF codes to signal the end of a line. When Microsoft developed its early operating systems, it inherited this convention.</span><br><span class="line"></span><br><span class="line">The difference in line endings between Unix-like systems and Windows can cause issues when transferring files between systems. For example, if a text file created on a Windows machine is opened on a Unix system, the presence of the CR character may cause the lines to appear incorrectly. Similarly, if a text file created on a Unix system is opened on a Windows machine, the lack of the CR character may cause the lines to appear incorrectly.</span><br><span class="line"></span><br><span class="line">To avoid these issues, many text editors and programming tools now have the ability to automatically convert line endings between Unix and Windows formats, or to handle both formats correctly.</span><br></pre></td></tr></table></figure>
-
+<p><code>ChatGPT：</code>The reason why carriage return or line feed at the end of text is different in different operating systems is rooted in historical differences in how these operating systems handled text and line endings.</p>
+<p>In Unix and Unix-like operating systems, such as Linux and macOS, a line feed (LF) character is used to mark the end of a line of text. This convention dates back to the early days of Unix, when it was developed as a text-based operating system. In Unix, files are stored as a sequence of lines, with each line terminated by a single LF character. This convention is also used in programming languages that were developed on Unix, such as C and its derivatives.</p>
+<p>In contrast, in early versions of Microsoft Windows and MS-DOS, a carriage return (CR) followed by a line feed (LF) sequence is used to mark the end of a line of text. This convention goes back to the days of typewriters and teletype machines, which used both the CR and LF codes to signal the end of a line. When Microsoft developed its early operating systems, it inherited this convention.</p>
+<p>The difference in line endings between Unix-like systems and Windows can cause issues when transferring files between systems. For example, if a text file created on a Windows machine is opened on a Unix system, the presence of the CR character may cause the lines to appear incorrectly. Similarly, if a text file created on a Unix system is opened on a Windows machine, the lack of the CR character may cause the lines to appear incorrectly.</p>
+<p>To avoid these issues, many text editors and programming tools now have the ability to automatically convert line endings between Unix and Windows formats, or to handle both formats correctly.</p>
 <p><code>我：Why is the end of the mac operating system a carriage return?</code></p>
-<p><code>ChatGPT：</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Historically, Mac OS (now known as macOS) used a carriage return (CR) character to mark the end of a line of text. This convention dates back to the early days of the Macintosh computer, which was first introduced in 1984.</span><br><span class="line"></span><br><span class="line">The Macintosh was designed to be a user-friendly computer that was accessible to non-technical users, and part of this design philosophy was reflected in the way it handled text. The original Macintosh operating system, known as System 1, used a simple, intuitive interface for editing text, which involved using the return key to create new lines of text.</span><br><span class="line"></span><br><span class="line">To achieve this behavior, the Macintosh operating system used a single CR character to mark the end of each line of text. This was a departure from the convention used in other operating systems of the time, such as Unix and MS-DOS, which used a combination of a CR and a line feed (LF) character to mark the end of a line.</span><br><span class="line"></span><br><span class="line">The use of a single CR character on the Macintosh made it easier for users to create and edit text, since they could simply press the return key to start a new line. However, this convention also made it difficult to exchange text files with other operating systems, which may expect a different line ending convention.</span><br><span class="line"></span><br><span class="line">Today, macOS still uses a single CR character as the default line ending convention for text files created on the system. However, most modern text editors and programming tools are able to handle multiple line ending conventions, including the use of both CR and LF characters, to ensure compatibility with other operating systems.</span><br></pre></td></tr></table></figure>]]></content>
+<p><code>ChatGPT：</code>Historically, Mac OS (now known as macOS) used a carriage return (CR) character to mark the end of a line of text. This convention dates back to the early days of the Macintosh computer, which was first introduced in 1984.</p>
+<p>The Macintosh was designed to be a user-friendly computer that was accessible to non-technical users, and part of this design philosophy was reflected in the way it handled text. The original Macintosh operating system, known as System 1, used a simple, intuitive interface for editing text, which involved using the return key to create new lines of text.</p>
+<p>To achieve this behavior, the Macintosh operating system used a single CR character to mark the end of each line of text. This was a departure from the convention used in other operating systems of the time, such as Unix and MS-DOS, which used a combination of a CR and a line feed (LF) character to mark the end of a line.</p>
+<p>The use of a single CR character on the Macintosh made it easier for users to create and edit text, since they could simply press the return key to start a new line. However, this convention also made it difficult to exchange text files with other operating systems, which may expect a different line ending convention.</p>
+<p>Today, macOS still uses a single CR character as the default line ending convention for text files created on the system. However, most modern text editors and programming tools are able to handle multiple line ending conventions, including the use of both CR and LF characters, to ensure compatibility with other operating systems.</p>
+]]></content>
       <categories>
         <category>计算机基础</category>
       </categories>
@@ -150,12 +159,52 @@
   <entry>
     <title>源码、反码、补码</title>
     <url>/2023/02/27/%E6%BA%90%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p>原码(true form)是一种计算机中对数字的二进制定点表示方法。原码表示法在数值前面增加了一位符号位（即最高位为符号位）：正数该位为0，负数该位为1（0有两种表示：+0和-0），其余位表示数值的大小。<br>例如，我们用8位二进制表示一个数，+11的原码为00001011，-11的原码就是10001011<br>一个 byte 有 8bit，最大值是 0 1 1 1 1 1 1 1 (+127)，最小值是 1 1 1 1 1 1 1 1 (-127)</p>
+<h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><p>正数的反码是其本身（等于原码），负数的反码是符号位保持不变，其余位取反。 反码的存在是为了正确计算负数，因为原码不能用于计算负数.</p>
+<p><code>计算负数</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-8 - 1 = -9</span><br><span class="line"> 10001000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11110111</span><br><span class="line">-00000001</span><br><span class="line">——————————</span><br><span class="line"> 11110110</span><br><span class="line"> 转为反码</span><br><span class="line"> 10001001 刚好就是-9</span><br></pre></td></tr></table></figure>
+<p>也就是说整个计算过程为 ((-8)反码 - (1)原码)反码</p>
+<p><code>跨零计算</code><br>负数跨零进行计算的话，计算结果不对</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-8 + 9 = 1</span><br><span class="line"> 10001000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11110111</span><br><span class="line">+00001001</span><br><span class="line">100000000</span><br><span class="line"> 去掉超过8位的位</span><br><span class="line"> 00000000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11111111</span><br></pre></td></tr></table></figure>
+<p>可以看到明显不对,这个时候就需要补码了</p>
+<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>正数的补码是其本身，负数的补码等于其反码 +1</p>
+<p><code>跨零计算</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-8 + 9 = 1</span><br><span class="line"> 10001000</span><br><span class="line"> 转为反码</span><br><span class="line"> 11110111</span><br><span class="line"> 转为补码</span><br><span class="line"> 11111000</span><br><span class="line">+00001001</span><br><span class="line">100000001</span><br><span class="line"> 去掉超过8位的位</span><br><span class="line"> 00000001</span><br></pre></td></tr></table></figure>
+<p>可以看到此时的值就是对的<br>总结下此时的计算过程 (-8)补 + (9)原</p>
+<h3 id="模的概念"><a href="#模的概念" class="headerlink" title="模的概念"></a>模的概念</h3><p>看了上面的一些概念，肯定有人会疑问，为什么负数的补码是反码加1，其实理解了模的概念，这些反码和补码就很清楚了。</p>
+<p><code>摘录自补码的百度百科</code></p>
+<blockquote>
+<p>“模”是指一个计量系统的计数范围，如过去计量粮食用的斗、时钟等。计算机也可以看成一个计量机器，因为计算机的字长是定长的，即存储和处理的位数是有限的，因此它也有一个计量范围，即都存在一个“模”。如：时钟的计量范围是0~11，模=12。表示n位的计算机计量范围是，模=．“模”实质上是计量器产生“溢出”的量，它的值在计量器上表示不出来，计量器上只能表示出模的余数。任何有模的计量器，均可化减法为加法运算。<br>就是取反后加1。<br>假设当前时针指向8点，而准确时间是6点，调整时间可有以下两种拨法：一种是倒拨2小时，即8-2=6；另一种是顺拨10小时，8+10=12+6=6，即8-2=8+10=8+12-2(mod 12)．在12为模的系统里，加10和减2效果是一样的，因此凡是减2运算，都可以用加10来代替。若用一般公式可表示为：a-b=a-b+mod=a+mod-b。对“模”而言，2和10互为补数。实际上，以12为模的系统中，11和1，8和4，9和3，7和5，6和6都有这个特性，共同的特点是两者相加等于模。对于计算机，其概念和方法完全一样。n位计算机，设n=8，所能表示的最大数是11111111，若再加1成100000000(9位)，但因只有8位，最高位1自然丢失（相当于丢失一个模）。又回到了 00000000，所以8位二进制系统的模为2的8次方。在这样的系统中减法问题也可以化成加法问题，只需把减数用相应的补数表示就可以了。把补数用到计算机对数的处理上，就是补码。</p>
+</blockquote>
+<p>回到上面 -8 + 9 = 1这个例子，用模的来理解（8为2进制数的模为128）就可以转换为 9 - 8 = 9 + 120 = 129<br>129 转为2进制表示即为 100000001，因为最多显示128，只有8位，所以最高的第9位去掉，即为00000001 = 1。</p>
+]]></content>
       <categories>
         <category>计算机基础</category>
       </categories>
       <tags>
         <tag>编码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>node.js实现tcp服务器和客户端</title>
+    <url>/2023/03/01/node-js%E5%AE%9E%E7%8E%B0tcp%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>加法机的实现</title>
+    <url>/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
 </search>
