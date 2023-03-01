@@ -20,18 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yuxiang.work","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="技术分享">
+<meta name="description" content="逻辑门在实现加法机前需要先了解逻辑门最基础的3个逻辑门：与(AND)、或(OR)、非 (NOT，也可以叫反相器)真值表 逻辑门的画法 异或(XOR)的实现异或门可以用基本的逻辑门来实现，非门可以用圆圈加在其它门的输入或者输出位置直接取反。 简化： 半加器 半加器电路是指对两个输入数据位相加，输出一个结果位和进位，没有进位输入的加法器电路。 是实现两个一位二进制数的加法运算电路。  半加器真值表 也">
 <meta property="og:type" content="article">
 <meta property="og:title" content="加法机的实现">
 <meta property="og:url" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="MapStory">
-<meta property="og:description" content="技术分享">
+<meta property="og:description" content="逻辑门在实现加法机前需要先了解逻辑门最基础的3个逻辑门：与(AND)、或(OR)、非 (NOT，也可以叫反相器)真值表 逻辑门的画法 异或(XOR)的实现异或门可以用基本的逻辑门来实现，非门可以用圆圈加在其它门的输入或者输出位置直接取反。 简化： 半加器 半加器电路是指对两个输入数据位相加，输出一个结果位和进位，没有进位输入的加法器电路。 是实现两个一位二进制数的加法运算电路。  半加器真值表 也">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E7%9C%9F%E5%80%BC%E8%A1%A8.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E9%80%BB%E8%BE%91%E9%97%A8.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%BC%82%E6%88%96%E9%97%A8.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E9%80%BB%E8%BE%91%E9%97%A81.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%8D%8A%E5%8A%A0%E5%99%A8%E7%9C%9F%E5%80%BC%E8%A1%A8.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%8D%8A%E5%8A%A0%E5%99%A8%E7%AE%80%E7%95%A5%E5%9B%BE.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%8D%8A%E5%8A%A0%E5%99%A8.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%85%A8%E5%8A%A0%E5%99%A8.png">
+<meta property="og:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%85%A8%E5%8A%A0%E5%99%A81.png">
 <meta property="article:published_time" content="2023-03-01T01:27:56.000Z">
 <meta property="article:modified_time" content="2023-03-01T01:27:56.000Z">
 <meta property="article:author" content="weshell">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="编码">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E7%9C%9F%E5%80%BC%E8%A1%A8.png">
 
 
 <link rel="canonical" href="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/">
@@ -134,7 +144,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -147,6 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">逻辑门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">半加器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E6%9C%BA"><span class="nav-number">3.</span> <span class="nav-text">加法机</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -249,7 +260,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机基础</span></a>
         </span>
     </span>
 
@@ -281,7 +292,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>365</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -299,7 +310,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h3 id="逻辑门"><a href="#逻辑门" class="headerlink" title="逻辑门"></a>逻辑门</h3><p>在实现加法机前需要先了解逻辑门<br>最基础的3个逻辑门：与(AND)、或(OR)、非 (NOT，也可以叫反相器)<br><code>真值表</code><br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E7%9C%9F%E5%80%BC%E8%A1%A8.png" alt="真值表.png"></p>
+<p><code>逻辑门的画法</code><br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E9%80%BB%E8%BE%91%E9%97%A8.png" alt="逻辑门.png"></p>
+<p><code>异或(XOR)的实现</code><br>异或门可以用基本的逻辑门来实现，非门可以用圆圈加在其它门的输入或者输出位置直接取反。<br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%BC%82%E6%88%96%E9%97%A8.png" alt="异或门.png"></p>
+<p>简化：<br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E9%80%BB%E8%BE%91%E9%97%A81.png" alt="逻辑门1.png"></p>
+<h3 id="半加器"><a href="#半加器" class="headerlink" title="半加器"></a>半加器</h3><blockquote>
+<p>半加器电路是指对两个输入数据位相加，输出一个结果位和进位，没有进位输入的加法器电路。 是实现两个一位二进制数的加法运算电路。</p>
+</blockquote>
+<p><code>半加器真值表</code><br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%8D%8A%E5%8A%A0%E5%99%A8%E7%9C%9F%E5%80%BC%E8%A1%A8.png" alt="半加器真值表.png"></p>
+<p><strong>也就是进位与和位分别输出</strong><br><code>和位</code>:二进制的和位规则和<strong>异或门</strong>一致，也就是相同为0，不同为1<br><code>进位</code>:进位规则则是两个输入都为真(1)就为1，其余为0，这和<strong>与门</strong>一致</p>
+<p><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%8D%8A%E5%8A%A0%E5%99%A8%E7%AE%80%E7%95%A5%E5%9B%BE.png" alt="半加器简略图.png"><br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%8D%8A%E5%8A%A0%E5%99%A8.png" alt="半加器.png"></p>
+<h3 id="加法机"><a href="#加法机" class="headerlink" title="加法机"></a>加法机</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  1111</span><br><span class="line">+ 1111</span><br><span class="line">——————————</span><br><span class="line"> 11110</span><br></pre></td></tr></table></figure>
+
+<p>以上面的4位2进制数为例。直接看第二位的结果，为1 + 1 的和位 再加上第一位的进位 1，所以结果为1，<br>因此第一位可以看成 1 + 1 的和位加上进位 0.</p>
+<p><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%85%A8%E5%8A%A0%E5%99%A8.png" alt="全加器.png"><br><img src="http://yuxiang.work/2023/03/01/%E5%8A%A0%E6%B3%95%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0/%E5%85%A8%E5%8A%A0%E5%99%A81.png" alt="全加器1.png"></p>
+
     </div>
 
     
@@ -326,7 +351,7 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/%E7%BC%96%E7%A0%81/" rel="tag"># 编码</a>
           </div>
 
         
