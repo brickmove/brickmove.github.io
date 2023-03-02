@@ -162,7 +162,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -245,7 +245,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+          <a href="/categories/%E6%95%B0%E9%80%9A/" itemprop="url" rel="index"><span itemprop="name">数通</span></a>
         </span>
     </span>
 
@@ -270,14 +270,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>1.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -288,7 +288,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h3 id="引入net模块"><a href="#引入net模块" class="headerlink" title="引入net模块"></a>引入net模块</h3><blockquote>
+<p>net 模块提供了异步的网络 API，用于创建基于流的 TCP 或 IPC 服务器 (net.createServer()) 和客户端 (net.createConnection())。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> server = net.createServer(<span class="function"><span class="params">socket</span> =&gt;</span> &#123;</span><br><span class="line">    socket.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;server recv data:&#x27;</span>, data);</span><br><span class="line">    &#125;)</span><br><span class="line">    socket.on(<span class="string">&#x27;close&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">hadError</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`sock close hadError: &quot;<span class="subst">$&#123;hadError&#125;</span>&quot;`</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    socket.on(<span class="string">&#x27;end&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;sock end&#x27;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    socket.on(<span class="string">&#x27;error&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;sock err:&#x27;</span>, err);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 设置最大连接数</span></span><br><span class="line">    server.maxConnections = <span class="number">100</span>;</span><br><span class="line">    <span class="comment">// 获取连接数</span></span><br><span class="line">    server.getConnections(<span class="function">(<span class="params">err, count</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;server count:&#x27;</span>, count);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">10033</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;server is running on 10033&quot;</span>);</span><br><span class="line">&#125;)</span><br><span class="line">server.on(<span class="string">&#x27;error&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;server err:&quot;</span>, err);</span><br><span class="line">&#125;)</span><br><span class="line">server.on(<span class="string">&#x27;close&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;server closed&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> client = net.Socket();</span><br><span class="line"><span class="keyword">const</span> host = <span class="string">&#x27;127.0.0.1&#x27;</span>;</span><br><span class="line">client.connect(<span class="number">10033</span>, host, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;connect the server&#x27;</span>);</span><br><span class="line">  client.write(<span class="string">&#x27;send first data&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.on(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;client data:&#x27;</span>, data);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">client.on(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;client end&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">client.on(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">`client error: <span class="subst">$&#123;err&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1169,13 +1176,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">10k</span>
+    <span title="站点总字数">11k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">17 分钟</span>
+    <span title="站点阅读时长">20 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
