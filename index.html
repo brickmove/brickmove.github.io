@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -204,6 +204,226 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2023/03/10/nodejs%E7%9A%84ip%E6%A8%A1%E5%9D%97%E7%9A%84%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="weshell">
+      <meta itemprop="description" content="技术分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapStory">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/10/nodejs%E7%9A%84ip%E6%A8%A1%E5%9D%97%E7%9A%84%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">nodejs的ip模块的应用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-10 17:39:06" itemprop="dateCreated datePublished" datetime="2023-03-10T17:39:06+08:00">2023-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E9%80%9A/" itemprop="url" rel="index"><span itemprop="name">数通</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="nodejs的ip模块的应用" href="/2023/03/10/nodejs%E7%9A%84ip%E6%A8%A1%E5%9D%97%E7%9A%84%E5%BA%94%E7%94%A8/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::9b66e523f7a0849832a5cf389a05d01e" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h3><blockquote>
+<p>//npm<br>npm install ip<br>// npm readme<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/ip">https://www.npmjs.com/package/ip</a><br>// github<br>git clone <a target="_blank" rel="noopener" href="https://github.com/indutny/node-ip.git">https://github.com/indutny/node-ip.git</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ip = <span class="built_in">require</span>(<span class="string">&#x27;ip&#x27;</span>);</span><br><span class="line">ip.address() <span class="comment">// my ip address</span></span><br><span class="line">ip.isPrivate(<span class="string">&#x27;127.0.0.1&#x27;</span>) <span class="comment">// Check whether an IP is within a private IP address range.</span></span><br><span class="line">ip.isV4Format(<span class="string">&#x27;127.0.0.1&#x27;</span>); <span class="comment">// Check whether an IP is a IPv4 address.</span></span><br><span class="line">ip.isV6Format(<span class="string">&#x27;::ffff:127.0.0.1&#x27;</span>); <span class="comment">// Check whether an IP is a IPv6 address.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="address"><a href="#address" class="headerlink" title="address"></a>address</h3><blockquote>
+<p>//npm<br>npm install address<br>// npm readme<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/address">https://www.npmjs.com/package/address</a><br>// github<br>git clone <a target="_blank" rel="noopener" href="https://github.com/node-modules/address">https://github.com/node-modules/address</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> address = <span class="built_in">require</span>(<span class="string">&#x27;address&#x27;</span>);</span><br><span class="line">address.ip();   <span class="comment">// 192.168.0.125</span></span><br><span class="line">address.ipv6();   <span class="comment">// 192.168.0.125</span></span><br><span class="line"><span class="comment">// 获取默认mac地址</span></span><br><span class="line">address.mac(<span class="function"><span class="keyword">function</span> (<span class="params">err, addr</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(addr); <span class="comment">// &#x27;78:ca:39:b0:e6:7d&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定网卡获取mac地址</span></span><br><span class="line">address.mac(<span class="string">&#x27;enp1s0&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, addr</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(addr); <span class="comment">// &#x27;0a:00:27:00:00:00&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// dns是通过读取/etc/resolv.conf获取的，建议用nmcli获取</span></span><br><span class="line">address.dns(<span class="function">(<span class="params">err, addrs</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(addrs);</span><br><span class="line">  <span class="comment">// [&#x27;10.13.2.1&#x27;, &#x27;10.13.2.6&#x27;]</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">address(<span class="function">(<span class="params">err, addrs</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(addrs.ip, addrs.ipv6, addrs.mac);</span><br><span class="line">  <span class="comment">// &#x27;192.168.0.2&#x27;, &#x27;fe80::7aca:39ff:feb0:e67d&#x27;, &#x27;78:ca:39:b0:e6:7d&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">address(<span class="string">&#x27;enp1s0&#x27;</span>, <span class="function">(<span class="params">err, addrs</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(addrs.ip, addrs.ipv6, addrs.mac);</span><br><span class="line">  <span class="comment">// &#x27;192.168.56.1&#x27;, null, &#x27;0a:00:27:00:00:00&#x27;</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">address.interface(<span class="string">&#x27;IPv4&#x27;</span>, <span class="string">&#x27;eth1&#x27;</span>);</span><br><span class="line"><span class="comment">// &#123; address: &#x27;192.168.1.1&#x27;, family: &#x27;IPv4&#x27;, mac: &#x27;78:ca:39:b0:e6:7d&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="netmask"><a href="#netmask" class="headerlink" title="netmask"></a>netmask</h3><blockquote>
+<p>//npm<br>npm install netmask<br>// npm readme<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/netmask">https://www.npmjs.com/package/netmask</a><br>// github<br>git clone <a target="_blank" rel="noopener" href="https://github.com/rs/node-netmask">https://github.com/rs/node-netmask</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Netmask = <span class="built_in">require</span>(<span class="string">&#x27;netmask&#x27;</span>).Netmask</span><br><span class="line"><span class="keyword">var</span> block = <span class="keyword">new</span> Netmask(<span class="string">&#x27;10.0.0.0/12&#x27;</span>);</span><br><span class="line">block.base;                     <span class="comment">// 10.0.0.0</span></span><br><span class="line">block.mask;                     <span class="comment">// 255.240.0.0</span></span><br><span class="line">block.bitmask;                  <span class="comment">// 12</span></span><br><span class="line">block.hostmask;                 <span class="comment">// 0.15.255.255</span></span><br><span class="line">block.broadcast;                <span class="comment">// 10.15.255.255</span></span><br><span class="line">block.size;                     <span class="comment">// 1048576</span></span><br><span class="line">block.first;                    <span class="comment">// 10.0.0.1</span></span><br><span class="line">block.last;                     <span class="comment">// 10.15.255.254</span></span><br><span class="line"></span><br><span class="line">block.contains(<span class="string">&#x27;10.0.8.10&#x27;</span>);    <span class="comment">// true</span></span><br><span class="line">block.contains(<span class="string">&#x27;10.8.0.10&#x27;</span>);    <span class="comment">// true</span></span><br><span class="line">block.contains(<span class="string">&#x27;192.168.1.20&#x27;</span>); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">block.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">ip, long, index</span>))</span>;</span><br><span class="line"></span><br><span class="line">block.next()                    <span class="comment">// Netmask(&#x27;10.16.0.0/12&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ipaddr-js"><a href="#ipaddr-js" class="headerlink" title="ipaddr.js"></a>ipaddr.js</h3><blockquote>
+<p>//npm<br>npm install ipaddr.js<br>// npm readme<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/ipaddr.js">https://www.npmjs.com/package/ipaddr.js</a><br>// github<br>git clone <a target="_blank" rel="noopener" href="https://github.com/whitequark/ipaddr.js">https://github.com/whitequark/ipaddr.js</a></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以用来校验和格式化</span></span><br><span class="line"><span class="keyword">let</span> ipaddr = <span class="built_in">require</span>(<span class="string">&#x27;ipaddr.js&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以获取掩码的bitmask 也可以校验掩码格式</span></span><br><span class="line">ipaddr.IPv4.parse(<span class="string">&#x27;255.255.255.240&#x27;</span>).prefixLengthFromSubnetMask() == <span class="number">28</span></span><br><span class="line">ipaddr.IPv4.parse(<span class="string">&#x27;255.192.164.0&#x27;</span>).prefixLengthFromSubnetMask()  == <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bitmask转掩码</span></span><br><span class="line">ipaddr.IPv4.subnetMaskFromPrefixLength(<span class="number">24</span>) == <span class="string">&#x27;255.255.255.0&#x27;</span></span><br><span class="line">ipaddr.IPv4.subnetMaskFromPrefixLength(<span class="number">29</span>) == <span class="string">&#x27;255.255.255.248&#x27;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2023/03/03/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="weshell">
+      <meta itemprop="description" content="技术分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapStory">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/03/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">异或运算学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-03 09:36:51" itemprop="dateCreated datePublished" datetime="2023-03-03T09:36:51+08:00">2023-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="异或运算学习" href="/2023/03/03/%E5%BC%82%E6%88%96%E8%BF%90%E7%AE%97%E5%AD%A6%E4%B9%A0/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::aadb33b0c2c8bbc6b8d59ee065a68a3e" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>0</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1176,13 +1396,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">14k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20 分钟</span>
+    <span title="站点阅读时长">25 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
