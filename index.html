@@ -156,18 +156,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -204,6 +204,114 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2023/03/13/Network-manager%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="weshell">
+      <meta itemprop="description" content="技术分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapStory">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/13/Network-manager%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">Network-manager服务学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-13 14:43:54" itemprop="dateCreated datePublished" datetime="2023-03-13T14:43:54+08:00">2023-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="Network-manager服务学习" href="/2023/03/13/Network-manager%E6%9C%8D%E5%8A%A1%E5%AD%A6%E4%B9%A0/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::7fac08359d5e9575544fcb8789fb0d22" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>NetworkManager 是一个为系统提供检测和配置功能以便自动连接到网络的程序。包含一个守护程序、一个命令行界面（nmcli）和一个基于 curses 的界面（nmtui）。</p>
+<h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">apt<span class="literal">-get</span> install NetworkManager</span><br><span class="line"><span class="comment"># centos</span></span><br><span class="line">yum install NetworkManager</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务启动"><a href="#服务启动" class="headerlink" title="服务启动"></a>服务启动</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看服务状态</span></span><br><span class="line">systemctl status network<span class="literal">-manager</span>.service</span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">systemctl <span class="built_in">start</span> network<span class="literal">-manager</span>.service</span><br></pre></td></tr></table></figure>
+
+<h3 id="nmcli命令行"><a href="#nmcli命令行" class="headerlink" title="nmcli命令行"></a>nmcli命令行</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有网络连接</span></span><br><span class="line"><span class="comment"># 长格式</span></span><br><span class="line">nmcli connection show</span><br><span class="line"></span><br><span class="line"><span class="comment"># 短格式，缩写</span></span><br><span class="line">nmcli con show</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看活动的网络连接</span></span><br><span class="line">nmcli con show <span class="literal">-active</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看指定网卡的详细信息</span></span><br><span class="line">nmcli con show eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示设备的连接状态</span></span><br><span class="line">nmcli status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示所有设备网络设备详情信息</span></span><br><span class="line">nmcli device show</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示指定网络设备的详细信息</span></span><br><span class="line">nmcli device show eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用网络连接</span></span><br><span class="line">nmcli con up eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停用网络连接（可以被自动激活）</span></span><br><span class="line">nmcli con down eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 禁用网卡，防止自动被激活</span></span><br><span class="line">nmcli device disconnect eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除网络连接的配置文件</span></span><br><span class="line">nmcli con delete eth0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新加载网络配置文件</span></span><br><span class="line">nmcli con reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置网卡自启动，实际修改的是网卡配置文件 ONBOOT=yes</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> connection.autoconnect yes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改IP地址是静态（manual）还是dhcp动态（auto）</span></span><br><span class="line"><span class="comment"># 实际修改的是网卡配置文件BOOTPROTO，BOOTPROTO=none 表示静态；BOOTPROTO=dhcp 表示动态</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> ipv4.method manual(<span class="keyword">static</span>) | auto</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改IP配置及网关</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> ipv4.addresses “<span class="number">10.10</span>.<span class="number">10.10</span>/<span class="number">24</span> <span class="number">10.10</span>.<span class="number">10.1</span>”</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改默认网关</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> ipv4.gateway <span class="number">10.10</span>.<span class="number">10.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加第二个IP地址</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> +ipv4.addresses <span class="number">10.10</span>.<span class="number">10.10</span>/<span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除第二个IP地址</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> <span class="literal">-ipv4</span>.addresses <span class="number">10.10</span>.<span class="number">10.10</span>/<span class="number">16</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加dns1</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> ipv4.dns <span class="number">114.114</span>.<span class="number">114.114</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加dns2</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> +ipv4.dns <span class="number">8.8</span>.<span class="number">8.8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一次添加多个dns</span></span><br><span class="line">nmcli con mod CON<span class="literal">-NAME</span> ipv4.dns <span class="number">114.114</span>.<span class="number">114.114</span>,<span class="number">8.8</span>.<span class="number">8.8</span>,<span class="number">8.8</span>.<span class="number">4.4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="nmtui图形化界面"><a href="#nmtui图形化界面" class="headerlink" title="nmtui图形化界面"></a>nmtui图形化界面</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1235,146 +1343,9 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="weshell">
-      <meta itemprop="description" content="技术分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapStory">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">hexo使用总结</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2022-01-24 11:29:27 / 修改时间：15:00:00" itemprop="dateCreated datePublished" datetime="2022-01-24T11:29:27+08:00">2022-01-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="hexo使用总结" href="/2022/01/24/hexo%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::8b159bd78840c8dc470f96000aa91afc" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>416</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>hexo安装</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="literal">-g</span> hexo<span class="literal">-cli</span></span><br><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p><code>hexo部署</code></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成静态文章</span></span><br><span class="line">hexo generate</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 部署文章</span></span><br><span class="line">hexo deploy</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p><code>发布文章</code></p>
-<p><strong>在发布之前了解下默认的3种布局(layout)</strong></p>
-<table>
-<thead>
-<tr>
-<th>布局</th>
-<th>路径</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>post</td>
-<td>source/_posts</td>
-<td>发布</td>
-</tr>
-<tr>
-<td>page</td>
-<td>source</td>
-<td>另起一页</td>
-</tr>
-<tr>
-<td>draft</td>
-<td>source/_drafts</td>
-<td>草稿</td>
-</tr>
-</tbody></table>
-<p><strong>可以修改3中布局模版达到定制效果</strong></p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布命令</span></span><br><span class="line">hexo new [<span class="type">layout</span>] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3种发布命令</span></span><br><span class="line">hexo new page test</span><br><span class="line">hexo new draft test</span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认使用的是post的模版</span></span><br><span class="line">hexo new post test</span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">hexo new test（新建文章 名test）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#草稿预览：</span></span><br><span class="line">hexo server -<span class="literal">-draft</span></span><br><span class="line"><span class="comment">#草稿的发布：</span></span><br><span class="line">hexo publish draft test</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
   </main>
@@ -1396,13 +1367,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">15k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">25 分钟</span>
+    <span title="站点阅读时长">28 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
