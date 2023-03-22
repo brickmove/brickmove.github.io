@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -204,6 +204,203 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2023/03/21/%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAsvn%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="weshell">
+      <meta itemprop="description" content="技术分享">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MapStory">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/03/21/%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAsvn%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">在linux上搭建svn服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-21 10:36:01" itemprop="dateCreated datePublished" datetime="2023-03-21T10:36:01+08:00">2023-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    <a title="在linux上搭建svn服务器" href="/2023/03/21/%E5%9C%A8linux%E4%B8%8A%E6%90%AD%E5%BB%BAsvn%E6%9C%8D%E5%8A%A1%E5%99%A8/#SOHUCS" itemprop="discussionUrl">
+      <span id="sourceId::2100abbb8ad751ca27007edc18e9d6da" class="cy_cmt_count" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>将部署在windows上的svn服务器迁移到linux</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p><code>linux服务器安装svn</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="literal">-y</span> install subversion</span><br></pre></td></tr></table></figure>
+
+<p><code>windows导出dump文件</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin dump 项目地址 &gt; 项目名.dump</span><br></pre></td></tr></table></figure>
+
+<p><code>linux创建版本库</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin create /var/svn/test</span><br></pre></td></tr></table></figure>
+
+<p><code>linux导入dump文件</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svnadmin load /svndata/项目名 &lt; 项目名.dump</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置文件对照表"><a href="#配置文件对照表" class="headerlink" title="配置文件对照表"></a>配置文件对照表</h4><table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>功能</th>
+<th>windows</th>
+<th>linux</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>svnserve.conf</td>
+<td>svn服务配置</td>
+<td>svnserve.conf</td>
+<td>svnserve.conf</td>
+</tr>
+<tr>
+<td>authz</td>
+<td>账号权限管理</td>
+<td>VisualSVN-SvnAuthz.ini</td>
+<td>authz</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>密码配置文件</td>
+<td>htpasswd</td>
+<td>passwd</td>
+</tr>
+<tr>
+<td>根目录authz</td>
+<td>所有库账号公共权限管理</td>
+<td>VisualSVN-GlobalWinAuthz.ini</td>
+<td>根目录authz</td>
+</tr>
+<tr>
+<td>groups.conf</td>
+<td>svn用户群组信息</td>
+<td>groups.conf</td>
+<td>根目录authz</td>
+</tr>
+</tbody></table>
+<h4 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h4><p><code>svnserve.conf</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">anon<span class="literal">-access</span> = none （none匿名不可访问）</span><br><span class="line">auth<span class="literal">-access</span> = <span class="built_in">write</span></span><br><span class="line">password<span class="literal">-db</span> = /var/svn/passwd (修改为根目录的passwd)</span><br><span class="line">authz<span class="literal">-db</span> = /var/svn/authz (修改为根目录的authz)</span><br></pre></td></tr></table></figure>
+
+<p><code>authz</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">groups</span>]</span><br><span class="line">dev = dayi123,dayi</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows</span></span><br><span class="line">[/]</span><br><span class="line"><span class="comment"># linux (需要带根目录下的项目名)</span></span><br><span class="line">[<span class="type">test</span>:/]</span><br><span class="line">test= rw</span><br></pre></td></tr></table></figure>
+
+<h4 id="httpd支持"><a href="#httpd支持" class="headerlink" title="httpd支持"></a>httpd支持</h4><p>为了能通过web访问，以及兼容windows visualsvn的htpasswd，需要使用httpd服务</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载httpd和mod_dav_svn模块</span></span><br><span class="line">yum install <span class="literal">-y</span> mod_dav_svn</span><br><span class="line">yum install <span class="literal">-y</span> httpd</span><br></pre></td></tr></table></figure>
+<p><code>增加httpd的svn配置</code><br>vim /etc/httpd/conf.d/svn.conf</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;Location /svn&gt;</span><br><span class="line"><span class="comment">#开启svn</span></span><br><span class="line">   DAV svn</span><br><span class="line"><span class="comment">#指定父目录位置，以后所有版本库都将存放在该目录下</span></span><br><span class="line">   SVNParentPath /var/svn/</span><br><span class="line"><span class="comment">#开启svn版本库父目录功能</span></span><br><span class="line">   SVNListParentPath On</span><br><span class="line"><span class="comment">#指定授权模式</span></span><br><span class="line">   AuthType Basic</span><br><span class="line"><span class="comment">#登陆窗口标题显示提示文字</span></span><br><span class="line">   AuthName <span class="string">&quot;Authorization Realm&quot;</span></span><br><span class="line"><span class="comment">#指定访问版本库的账户和密码存放文件，该文件需要用apache的htpasswd命令创建</span></span><br><span class="line">   AuthUserFile /var/svn/htpasswd</span><br><span class="line"><span class="comment">#指定访问版本库的用户和组的权限控制文件</span></span><br><span class="line">   AuthzSVNAccessFile /var/svn/authz</span><br><span class="line"><span class="comment">#要求验证有效的用户才能访问</span></span><br><span class="line">   Require valid<span class="literal">-user</span></span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>开启httpd服务</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable httpd</span><br><span class="line">systemctl <span class="built_in">start</span> httpd</span><br></pre></td></tr></table></figure>
+
+<p>如果不想使用httpd的默认端口80或者该端口被占用，则可以修改<code>/etc/httpd/conf/httpd.conf</code>中的默认端口</p>
+<p><code>兼容windows的htpasswd</code><br>首先查看htpasswd文件中密码的格式<br><strong>test:$apr1$uer$1txKFt7mXE/EV1ouN4xWK1</strong></p>
+<p>对比httpd官网给的几种加密方式：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bcrypt</span><br><span class="line"><span class="variable">$</span> htpasswd <span class="literal">-nbB</span> myName myPassword</span><br><span class="line">myName:<span class="variable">$2y</span><span class="variable">$05</span><span class="variable">$c4WoMPo3SXsafkva</span>.HHa6uXQZWr7oboPiC2bT/r7q1BB8I2s0BRqC</span><br><span class="line"></span><br><span class="line">MD5</span><br><span class="line"><span class="variable">$</span> htpasswd <span class="literal">-nbm</span> myName myPassword</span><br><span class="line">myName:<span class="variable">$apr1</span><span class="variable">$r31</span>.....<span class="variable">$HqJZimcKQFAMYayBlzkrA</span>/</span><br><span class="line"></span><br><span class="line">SHA1</span><br><span class="line"><span class="variable">$</span> htpasswd <span class="literal">-nbs</span> myName myPassword</span><br><span class="line">myName:&#123;SHA&#125;VBPuJHI7uixaa6LQGWx4s+<span class="number">5</span>GKNE=</span><br><span class="line"></span><br><span class="line">CRYPT</span><br><span class="line"><span class="variable">$</span> htpasswd <span class="literal">-nbd</span> myName myPassword</span><br><span class="line">myName:rqXexS6ZhobKA</span><br></pre></td></tr></table></figure>
+<p>可以看出使用的是MD5加密</p>
+<p><code>使用htpasswd增加新用户</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">htpasswd <span class="literal">-nbm</span> myName myPassword</span><br><span class="line">=&gt; myName:<span class="variable">$apr1</span><span class="variable">$i</span>/YRWA8N<span class="variable">$sHsoGDljceyyIj5KTQJw</span>/.</span><br></pre></td></tr></table></figure>
+<p>将其拷贝到httpd文件中，测试能否登陆svn即可</p>
+<h4 id="启动svn服务"><a href="#启动svn服务" class="headerlink" title="启动svn服务"></a>启动svn服务</h4><p><code>基本命令</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">svnserve <span class="literal">-d</span> <span class="literal">-r</span> /var/svn/</span><br><span class="line">killall svnserve</span><br></pre></td></tr></table></figure>
+<p><code>设置为systemctrl服务</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">Unit</span>]</span><br><span class="line">Description=svn<span class="literal">-server</span></span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[<span class="type">Service</span>]</span><br><span class="line"><span class="built_in">Type</span>=forking</span><br><span class="line">ExecStart=/usr/bin/svnserve <span class="literal">-d</span> <span class="literal">-r</span> /var/svn</span><br><span class="line">ExecStop=/usr/bin/killall svnserve </span><br><span class="line">PrivateTmp=true</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=<span class="number">1</span>min</span><br><span class="line"></span><br><span class="line">[<span class="type">Install</span>]</span><br><span class="line">WantedBy=multi<span class="literal">-user</span>.target</span><br></pre></td></tr></table></figure>
+
+<p>systemctl daemon-reload<br>systemctl enable svn<br>systemctl start svn</p>
+<h4 id="更换svn库地址"><a href="#更换svn库地址" class="headerlink" title="更换svn库地址"></a>更换svn库地址</h4><p>右键=》TortoiseSVN=》重新定位</p>
+<h4 id="其它一些功能"><a href="#其它一些功能" class="headerlink" title="其它一些功能"></a>其它一些功能</h4><p><code>添加提交时强制写日志功能</code><br>首先拷贝hooks下面的pre-commit.tmpl为pre-commit（windows下为’pre-commit.bat’ or ‘pre-commit.exe’） 并增加执行权限<br>chmod -R u+x,g+x,o+x hooks</p>
+<p>代码</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">REPOS=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">TXN=<span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Make sure that the log message contains some text.</span></span><br><span class="line">SVNLOOK=/usr/bin/svnlook</span><br><span class="line">LOGMSG=<span class="variable">$</span>(<span class="variable">$SVNLOOK</span> log <span class="literal">-t</span> <span class="string">&quot;<span class="variable">$TXN</span>&quot;</span> <span class="string">&quot;<span class="variable">$REPOS</span>&quot;</span> | grep <span class="string">&quot;[a-zA-Z0-9]&quot;</span> | wc <span class="literal">-c</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$LOGMSG</span>&quot;</span> -<span class="type">lt</span> <span class="number">10</span> ]; then</span><br><span class="line">	<span class="built_in">echo</span> <span class="literal">-e</span> <span class="string">&quot;\n Log message can&#x27;t be empty! you must input change log. &quot;</span> <span class="number">1</span>&gt;&amp;<span class="number">2</span></span><br><span class="line"><span class="keyword">exit</span> <span class="number">1</span></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/df42f7ca4abd4b92a665111922c8cae2.png" alt="在这里插入图片描述"></p>
+<p><code>增加备份功能</code><br><strong>全量备份</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># svn全量备份脚本</span><br><span class="line"></span><br><span class="line">DATE=$(date +%Y%m%d:%H:%M:%S)       #定义时间变量，用于文件名后缀</span><br><span class="line">SVN_DIR=/var/svn                    #定义SVN库目录</span><br><span class="line">SVN_BAK_DIR=/var/svndumpBak         #定义备份文件存放目录</span><br><span class="line"></span><br><span class="line"># 备份库列表</span><br><span class="line">bakList=(test1 test2)</span><br><span class="line"></span><br><span class="line"># 保留日志份数</span><br><span class="line">keep_log_num=1</span><br><span class="line"></span><br><span class="line">for rep in $&#123;bakList[@]&#125;</span><br><span class="line">do</span><br><span class="line">	# 定义各个项目的初始版本号文件</span><br><span class="line">	svn_dir=$SVN_DIR/$rep</span><br><span class="line">	svn_bak_dir=$SVN_BAK_DIR/full_log/$rep</span><br><span class="line">	if [[ ! -d $svn_bak_dir ]]</span><br><span class="line">        then</span><br><span class="line">		mkdir -p $svn_bak_dir                </span><br><span class="line">	fi</span><br><span class="line"></span><br><span class="line">	#开始备份</span><br><span class="line">	svnadmin dump $svn_dir &gt; $svn_bak_dir/$&#123;rep&#125;_$DATE.dump</span><br><span class="line">	if [ $? -eq 0 ];</span><br><span class="line">    	then</span><br><span class="line">    		echo &quot;backup success....&quot;</span><br><span class="line">	else</span><br><span class="line">    		echo &quot;backup fail....&quot;</span><br><span class="line">		continue</span><br><span class="line">	fi</span><br><span class="line"></span><br><span class="line">	cd $svn_bak_dir</span><br><span class="line">	#清理过期备份</span><br><span class="line">	num=`expr $keep_log_num + 1`</span><br><span class="line">	ls -t | tail -n +$num | xargs rm -rf</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p><strong>增量备份</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"># svn增量备份脚本</span><br><span class="line"></span><br><span class="line">DATE=$(date +%Y%m%d:%H:%M:%S)       #定义时间变量，用于文件名后缀</span><br><span class="line">SVN_DIR=/var/svn                    #定义SVN库目录</span><br><span class="line">SVN_BAK_DIR=/var/svndumpBak         #定义备份文件存放目录</span><br><span class="line"></span><br><span class="line"># 备份库列表</span><br><span class="line">bakList=(test1 test2)</span><br><span class="line"></span><br><span class="line"># 保留日志份数</span><br><span class="line">keep_log_num=7</span><br><span class="line"></span><br><span class="line">for rep in $&#123;bakList[@]&#125;</span><br><span class="line">do</span><br><span class="line">	# 定义各个项目的初始版本号文件</span><br><span class="line">	svn_dir=$SVN_DIR/$rep</span><br><span class="line">	svn_file=$svn_dir/conf/svn_ver_id</span><br><span class="line">	svn_bak_dir=$SVN_BAK_DIR/incr_log/$rep</span><br><span class="line"></span><br><span class="line">	if [[ ! -e $svn_file ]]</span><br><span class="line">	then</span><br><span class="line">		touch $svn_file</span><br><span class="line">		echo &#x27;0&#x27; &gt; $svn_file</span><br><span class="line">	fi</span><br><span class="line"></span><br><span class="line">        if [[ ! -d $svn_bak_dir ]]</span><br><span class="line">        then</span><br><span class="line">		mkdir -p $svn_bak_dir                </span><br><span class="line">        fi</span><br><span class="line"></span><br><span class="line">    NUM0=$(cat $svn_file)</span><br><span class="line">    NUM1=`expr $NUM0 + 1`</span><br><span class="line">	NUM2=$(svnlook youngest $svn_dir)</span><br><span class="line"></span><br><span class="line">	#没有新增跳过</span><br><span class="line">	if [[ NUM1 -eq NUM2 ]]</span><br><span class="line">	then</span><br><span class="line">		continue</span><br><span class="line">	fi	</span><br><span class="line"></span><br><span class="line">	#开始备份</span><br><span class="line">	svnadmin dump $svn_dir -r $NUM1:$NUM2 --incremental &gt; $svn_bak_dir/$&#123;rep&#125;_$&#123;NUM1&#125;_$&#123;NUM2&#125;_$DATE.dump</span><br><span class="line">	</span><br><span class="line">	#判断备份是否成功，若成功，则记录当前最新的版本号到临时文件中，用于下次增量备份使用</span><br><span class="line">	if [ $? -eq 0 ];</span><br><span class="line">    	then</span><br><span class="line">    		echo $NUM2 &gt; $svn_file</span><br><span class="line">	else</span><br><span class="line">    		echo &quot;backup fail....&quot;</span><br><span class="line">		continue</span><br><span class="line">	fi</span><br><span class="line"></span><br><span class="line">	#清理过期备份</span><br><span class="line">	cd $svn_bak_dir</span><br><span class="line">	num=`expr $keep_log_num + 1`</span><br><span class="line">	ls -t | tail -n +$num | xargs rm -rf</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h4 id="遇到的一些问题"><a href="#遇到的一些问题" class="headerlink" title="遇到的一些问题"></a>遇到的一些问题</h4><p><code>svn could not begin a transaction svn 提交文件报错</code><br><img src="https://img-blog.csdnimg.cn/38addb1bf8254fbf808fc54b5204c20a.png" alt="在这里插入图片描述"><br>原因是在svn服务器上创建仓库时使用了root身份登录服务器, 导致文件没有足够的写权限, 需更改仓库的组权限<br>chown -R apache:apache /var/svn</p>
+<p><code>[Error output could not be translated from the native locale to UTF-8.] hooks里面有中文报错</code><br><img src="https://img-blog.csdnimg.cn/e13086f5b3bc4908badd536f8c335bed.png" alt="在这里插入图片描述"></p>
+<p>经过查询是1.8之后才会解决的一个bug，可以升级到1.8以上的版本测试下下面的方法<br>vim /etc/httpd/conf/httpd.conf</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;IfModule mod_dav_fs.c&gt;</span><br><span class="line"><span class="comment"># Location of the WebDAV lock database.</span></span><br><span class="line">DAVLockDB /var/lib/dav/lockdb</span><br><span class="line">SVNUseUTF8 On</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<p>重启httpd</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lgh344902118/p/16348164.html">svn 从windows迁移到linux 记录 </a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1240,109 +1437,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="weshell">
-      <meta itemprop="description" content="技术分享">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MapStory">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/" class="post-title-link" itemprop="url">Hexo-asset-image插件无法正确识别图片路径</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-26 17:58:59" itemprop="dateCreated datePublished" datetime="2022-01-26T17:58:59+08:00">2022-01-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    <a title="Hexo-asset-image插件无法正确识别图片路径" href="/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/#SOHUCS" itemprop="discussionUrl">
-      <span id="sourceId::ec950184dde23443300cbf5f577e4e71" class="cy_cmt_count" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>69</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>问题背景</code><br>路径后面会多一层域名的.work<br>比如域名为yuxiang.work,图片会被链接到下面的路径<br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180401.png" alt="微信截图_20220126180401.png"></p>
-<p><code>解决方案</code><br>修改插件的源码<code>index.js</code><br><img src="http://yuxiang.work/2022/01/26/Hexo-asset-image%E6%8F%92%E4%BB%B6%E6%97%A0%E6%B3%95%E6%AD%A3%E7%A1%AE%E8%AF%86%E5%88%AB%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20220126180652.png" alt="微信截图_20220126180652.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1367,13 +1461,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">20k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">28 分钟</span>
+    <span title="站点阅读时长">36 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
